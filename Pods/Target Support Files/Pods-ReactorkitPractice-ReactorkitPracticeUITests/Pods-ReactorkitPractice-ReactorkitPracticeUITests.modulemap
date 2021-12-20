@@ -1,0 +1,6 @@
+framework module Pods_ReactorkitPractice_ReactorkitPracticeUITests {
+  umbrella header "Pods-ReactorkitPractice-ReactorkitPracticeUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
