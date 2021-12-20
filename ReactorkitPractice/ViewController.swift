@@ -10,7 +10,7 @@ import ReactorKit
 import RxSwift
 import RxCocoa
 
-class ViewController: UIViewController, StoryboardView {
+class ViewController: UIViewController, View {
     
     typealias Reactor = MainReactor
     var disposeBag: DisposeBag = DisposeBag()
@@ -23,7 +23,14 @@ class ViewController: UIViewController, StoryboardView {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.        
+        // Do any additional setup after loading the view.
+        setupUI()
+        self.reactor = MainReactor()
+    }
+    
+    private func setupUI() {
+        idTextField.delegate = self
+        pwTextField.delegate = self
     }
     
     func bind(reactor: MainReactor) {
@@ -81,3 +88,9 @@ class ViewController: UIViewController, StoryboardView {
 
 
 
+extension ViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
+}
